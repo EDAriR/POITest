@@ -23,9 +23,7 @@ public class Readxlsm {
 
         Workbook workbook = null;
         try {
-            workbook = new XSSFWorkbook(
-                    OPCPackage.open("report1.xlsm")
-            );
+            workbook = new XSSFWorkbook(OPCPackage.open("report1.xlsm"));
         } catch (IOException e1) {
             e1.printStackTrace();
         } catch (InvalidFormatException e1) {
@@ -55,19 +53,14 @@ public class Readxlsm {
         FileOutputStream out = null;
         try {
             out = new FileOutputStream(new File(fileName));
+            workbook.write(out);
+            out.close();
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
-        }
-        try {
-            workbook.write(out);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        try {
-            out.close();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+
         System.out.println("xlsm created successfully..");
 
     }
